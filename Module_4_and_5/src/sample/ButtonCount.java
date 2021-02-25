@@ -13,6 +13,7 @@ public class ButtonCount extends Application {
     private Button button;
     private Text buttonCountText;
     private int clickCount;
+    private Scene scene;
 
     public void start(Stage primaryStage) {
         clickCount = 0;
@@ -28,7 +29,7 @@ public class ButtonCount extends Application {
 
         pane.getChildren().add(buttonCountText);
 
-        Scene scene = new Scene(pane, 300, 300);
+        scene = new Scene(pane, 300, 300);
         scene.setFill((Color.PINK));
 
         primaryStage.setTitle("Button Click Count");
@@ -39,6 +40,9 @@ public class ButtonCount extends Application {
 
     private void handleButton(ActionEvent event) {
         clickCount ++;
+        if(clickCount % 5 == 0) {
+            scene.setFill(Color.color(Math.random(), Math.random(), Math.random()));
+        }
         buttonCountText.setText("Count: " + clickCount);
     }
 
