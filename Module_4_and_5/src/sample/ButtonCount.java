@@ -17,6 +17,7 @@ public class ButtonCount extends Application {
     public void start(Stage primaryStage) {
         clickCount = 0;
         Pane pane = new FlowPane();
+        pane.setStyle("-fx-background-color: null;");
 
         button = new Button("Click here!");
         button.setOnAction(this::handleButton);
