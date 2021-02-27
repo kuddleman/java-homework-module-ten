@@ -15,17 +15,28 @@ public class HelloUser extends Application {
 
     public void start(Stage primaryStage) {
         Pane pane = new FlowPane();
+        pane.setStyle("-fx-background-color: null;");
 
         messageText = new Text("Hello World");
         messageText.setFont(Font.font(18));
-        messageText.setFill(Color.PLUM);
+        messageText.setFill(Color.DARKRED);
         pane.getChildren().add(messageText);
+
+        nameInputField = new TextField();
+        nameInputField.setOnAction(this::processTextField);
+        pane.getChildren().add(nameInputField);
 
         Scene scene = new Scene(pane, 300, 300, Color.SKYBLUE);
 
         primaryStage.setTitle("Hello, User!");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void processTextField(ActionEvent event) {
+        String userInputText = nameInputField.getText();
+        messageText.setText("Hello, " + userInputText + "!");
+        nameInputField.clear();
     }
 
     public static void main(String[] args) {
