@@ -10,8 +10,9 @@ import javafx.scene.text.*;
 import javafx.stage.*;
 
 public class HelloUser extends Application {
-    private Text messageText;
+    private Text messageText, nameInputFieldLabel;
     private TextField nameInputField;
+    private Button submitButton;
 
     public void start(Stage primaryStage) {
         Pane pane = new FlowPane();
@@ -22,11 +23,18 @@ public class HelloUser extends Application {
         messageText.setFill(Color.DARKRED);
         pane.getChildren().add(messageText);
 
+        nameInputFieldLabel = new Text("Enter your name: ");
+        pane.getChildren().add(nameInputFieldLabel);
+
         nameInputField = new TextField();
         nameInputField.setOnAction(this::processTextField);
         pane.getChildren().add(nameInputField);
 
-        Scene scene = new Scene(pane, 300, 300, Color.SKYBLUE);
+        submitButton = new Button("Submit Name");
+        submitButton.setOnAction(this::processTextField);
+        pane.getChildren().add(submitButton);
+
+        Scene scene = new Scene(pane, 200, 300, Color.SKYBLUE);
 
         primaryStage.setTitle("Hello, User!");
         primaryStage.setScene(scene);
@@ -35,8 +43,11 @@ public class HelloUser extends Application {
 
     private void processTextField(ActionEvent event) {
         String userInputText = nameInputField.getText();
-        messageText.setText("Hello, " + userInputText + "!");
-        nameInputField.clear();
+        if (!userInputText.equals("")) {
+            messageText.setText("Hello, " + userInputText + "!");
+            nameInputField.clear();
+        }
+
     }
 
     public static void main(String[] args) {
