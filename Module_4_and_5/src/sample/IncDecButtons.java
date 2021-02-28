@@ -14,9 +14,12 @@ public class IncDecButtons extends Application {
 
     private Text counterText;
     private Button incButton, decButton;
+    private int counter;
 
 
     public void start(Stage primaryStage) {
+        counter = 0;
+
         VBox mainVBox = new VBox();
         mainVBox.setStyle("-fx-background-color: cyan");
         mainVBox.setAlignment(Pos.CENTER);
@@ -28,7 +31,11 @@ public class IncDecButtons extends Application {
         mainVBox.setSpacing(10);
 
         incButton = new Button(" + ");
+        incButton.setOnAction(this::handleButtons);
+
         decButton = new Button(" - ");
+        decButton.setOnAction(this::handleButtons);
+
         HBox buttonBox = new HBox(incButton, decButton);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setSpacing(10);
@@ -39,6 +46,15 @@ public class IncDecButtons extends Application {
         primaryStage.setTitle("IncDec Buttons");
         primaryStage.show();
 
+    }
+
+    private void handleButtons(ActionEvent event) {
+       if(event.getSource() == incButton) {
+           counter ++;
+       } else if(event.getSource() == decButton) {
+           counter --;
+       }
+        counterText.setText(Integer.toString(counter));
     }
 
     public static void main(String[] args) {
