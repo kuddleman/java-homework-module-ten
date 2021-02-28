@@ -14,13 +14,14 @@ public class IncDecButtons extends Application {
 
     private Text counterText;
     private Button incButton, decButton;
-    private int counter;
+    private int counter, interval;
     private TextField intervalField;
     private Text intervalFieldLabel;
 
 
     public void start(Stage primaryStage) {
         counter = 0;
+        interval = 1;
 
 
         VBox mainVBox = new VBox();
@@ -46,6 +47,7 @@ public class IncDecButtons extends Application {
 
         intervalFieldLabel = new Text("Interval: ");
         intervalField = new TextField("1");
+        intervalField.setOnAction(this::handleButtons);
 
         HBox intervalBox = new HBox(intervalFieldLabel, intervalField);
         intervalBox.setAlignment(Pos.CENTER);
@@ -55,18 +57,21 @@ public class IncDecButtons extends Application {
 
 
 
-        Scene scene = new Scene(mainVBox, 200, 200);
+        Scene scene = new Scene(mainVBox, 250, 150);
         primaryStage.setScene(scene);
         primaryStage.setTitle("IncDec Buttons");
         primaryStage.show();
 
     }
 
+
+
     private void handleButtons(ActionEvent event) {
+       interval = Integer.parseInt(intervalField.getText());
        if(event.getSource() == incButton) {
-           counter ++;
+           counter += interval;
        } else if(event.getSource() == decButton) {
-           counter --;
+           counter -= interval;
        }
         counterText.setText(Integer.toString(counter));
     }
