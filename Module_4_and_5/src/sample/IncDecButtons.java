@@ -15,10 +15,13 @@ public class IncDecButtons extends Application {
     private Text counterText;
     private Button incButton, decButton;
     private int counter;
+    private TextField intervalField;
+    private Text intervalFieldLabel;
 
 
     public void start(Stage primaryStage) {
         counter = 0;
+
 
         VBox mainVBox = new VBox();
         mainVBox.setStyle("-fx-background-color: cyan");
@@ -40,6 +43,17 @@ public class IncDecButtons extends Application {
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setSpacing(10);
         mainVBox.getChildren().add(buttonBox);
+
+        intervalFieldLabel = new Text("Interval: ");
+        intervalField = new TextField("1");
+
+        HBox intervalBox = new HBox(intervalFieldLabel, intervalField);
+        intervalBox.setAlignment(Pos.CENTER);
+        intervalBox.setSpacing(10);
+        mainVBox.getChildren().add(intervalBox);
+
+
+
 
         Scene scene = new Scene(mainVBox, 200, 200);
         primaryStage.setScene(scene);
