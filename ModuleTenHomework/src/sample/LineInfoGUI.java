@@ -40,6 +40,7 @@ public class LineInfoGUI extends Application {
         // UPDATE THE TEXT OBJECT TO DISPLAY THAT INFO.
 
 
+
         midpointText = new Text("");
         midpointButton = new Button("Calculate Midpoint");
         // YOUR CODE HERE- ADD A STATEMENT TO SET THE ACTION OF THE BUTTON.

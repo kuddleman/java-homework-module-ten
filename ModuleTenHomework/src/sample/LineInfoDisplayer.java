@@ -12,6 +12,11 @@ public interface LineInfoDisplayer {
 
     public static LineInfoDisplayer createLineInfoDisplayer(InfoType type) {
         //  YOUR CODE HERE!
+//        switch(type) {
+//            case DISTANCE: return //TODO;
+//            case MIDPOINT: return //TODO;
+//            case VERTHORZ: return //TODO;
+//        }
 
 
         return null;
