@@ -60,5 +60,5 @@ of what you should figure out.
 Follow naming conventions for variables, classes, and methods. 
 
 Note that you must use lambdas for this homework. Code written without 
-lambdas will receive zero points.
+lambdas will receive zero points.xxxxx
 
