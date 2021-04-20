@@ -10,8 +10,12 @@ import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 import javafx.scene.text.*;
 import javafx.stage.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class LineInfoGUI extends Application {
 
@@ -38,6 +42,12 @@ public class LineInfoGUI extends Application {
         // USE A LAMBDA TO ASSIGN A VALUE TO lineInfoDisplayer AND
         // USE OBJECT TO GET THE STRING DESCRIBING THE DISTANCE.
         // UPDATE THE TEXT OBJECT TO DISPLAY THAT INFO.
+        distanceButton.setOnAction((event) -> {
+            showCurrentTimeStamp();
+            LineInfoDisplayer displayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.DISTANCE);
+            String info = displayer.getInfo(line);
+            distanceText.setText(info);
+        });
 
 
 
@@ -45,12 +55,24 @@ public class LineInfoGUI extends Application {
         midpointButton = new Button("Calculate Midpoint");
         // YOUR CODE HERE- ADD A STATEMENT TO SET THE ACTION OF THE BUTTON.
         // SAME AS ABOVE BUT FOR MIDPOINT!
+        midpointButton.setOnAction((event) -> {
+            showCurrentTimeStamp();
+            LineInfoDisplayer displayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.MIDPOINT);
+            String info = displayer.getInfo(line);
+            midpointText.setText(info);
+        });
 
 
         vertHorxText = new Text("");
         vertHorzButton = new Button("Determine Vertical/Horizontal");
         // YOUR CODE HERE- ADD A STATEMENT TO SET THE ACTION OF THE BUTTON.
         // SAME AS ABOVE BUT FOR VERTICAL/HORIZONTAL!
+        vertHorzButton.setOnAction((event) -> {
+            showCurrentTimeStamp();
+            LineInfoDisplayer displayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.VERTHORZ);
+            String info = displayer.getInfo(line);
+            vertHorxText.setText(info);
+        });
 
 
         timeText = new Text("");
@@ -78,6 +100,13 @@ public class LineInfoGUI extends Application {
         primaryStage.show();
     }
 
+    private void showCurrentTimeStamp() {
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String strDate = dateFormat.format(date);
+
+        timeText.setText(strDate);
+    }
     private void handleMouseClicks(MouseEvent event) {
         double x = event.getX();
         double y = event.getY();
